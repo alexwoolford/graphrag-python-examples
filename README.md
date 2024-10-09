@@ -1,1 +1,1 @@
-# neo4j-graphrag-python-example
+# GraphRAG Python package Examples
