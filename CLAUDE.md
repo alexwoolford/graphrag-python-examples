@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Educational example demonstrating end-to-end GraphRAG using the Neo4j GraphRAG Python package and GLiNER2 for knowledge graph extraction. Processes Lupus research PDFs into a Neo4j knowledge graph, then performs retrieval-augmented question answering.
 
-Blog walkthrough: https://neo4j.com/blog/graphrag-python-package/
 Docs: https://neo4j.com/docs/neo4j-graphrag-python/current/index.html
+Original blog (describes earlier LLM-based approach): https://neo4j.com/blog/graphrag-python-package/
 
 ## Environment Setup
 
@@ -39,7 +39,7 @@ The notebook `end-to-end-lupus.ipynb` runs cells sequentially through four phase
 
 ## Key Dependencies
 
-- `gliner2` — Local entity and relationship extraction (no API needed)
+- `gliner2` + `torch` — Local entity and relationship extraction (no API needed)
 - `neo4j_graphrag[openai]` — Chunking, retrieval, and RAG pipeline
 - `neo4j` — Database driver
 - `pypdf` — PDF text extraction
@@ -47,4 +47,4 @@ The notebook `end-to-end-lupus.ipynb` runs cells sequentially through four phase
 
 ## Data
 
-Four truncated Lupus research PDFs from NIH PubMed in `truncated-pdfs/`. Reference pages removed to focus on medical content.
+Three truncated Lupus research PDFs from NIH PubMed in `truncated-pdfs/`. Reference pages removed to focus on medical content.

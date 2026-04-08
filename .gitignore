@@ -3,3 +3,7 @@
 .mcp.json
 .idea/
 .ipynb_checkpoints/
+__pycache__/
+additional-context/
+COMPARISON.md
+comparison.html

@@ -167,7 +167,7 @@ ORDER BY entitiesExtracted DESC
 > "What you just saw was built with a YAML config and a few dozen lines of Python code. Three PDFs went in. A knowledge graph with over 1,100 deduplicated entities and schema-enforced relationships came out. GLiNER2 handles extraction locally — no API cost, fully deterministic. And that graph powers RAG that's more accurate, more explainable, and more useful than vector search alone."
 
 **Resources:**
-- Demo code: `github.com/neo4j-product-examples/graphrag-python-examples`
+- Demo code: `github.com/alexwoolford/graphrag-python-examples`
 - Docs: `neo4j.com/docs/neo4j-graphrag-python`
 - Blog: `neo4j.com/blog/graphrag-python-package/`
 - Free course: `graphacademy.neo4j.com/courses/genai-workshop-graphrag/`
