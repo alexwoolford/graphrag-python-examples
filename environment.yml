@@ -1,0 +1,28 @@
+name: graphrag-python-examples
+channels:
+  - conda-forge          
+dependencies:
+  # --- core runtime ---
+  - python=3.11          
+  - pip                  
+  - jupyterlab           
+
+  # --- heavy native libs that are nicer via Conda ---
+  - pandas
+  - numpy
+  - pytz
+  - matplotlib
+  - pip:
+      # --- GraphRAG stack ---
+      - "neo4j_graphrag[openai]"
+      - neo4j
+      # --- PDF parsing for the Lupus example ---
+      - pypdf
+      # --- GLiNER2 KG extraction ---
+      - gliner2
+      - torch
+      - pyyaml
+      # --- misc utilities used in the notebook ---
+      - python-dotenv
+      - tiktoken
+      - ipywidgets

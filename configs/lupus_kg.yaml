@@ -1,0 +1,97 @@
+# Knowledge graph extraction config for Lupus research PDFs (GLiNER2).
+#
+# Run: python scripts/extract_lupus_kg.py --config configs/lupus_kg.yaml
+# Or:  python scripts/extract_lupus_kg.py --config configs/lupus_kg.yaml --limit 50 --dry-run
+
+neo4j:
+  database: null  # null = use NEO4J_DATABASE from .env
+
+model_id: fastino/gliner2-base-v1
+
+entities:
+  labels:
+    - disease
+    - drug
+    - gene_or_protein
+    - biomarker
+    - symptom
+    - cell_type
+    - pathway
+    - anatomy
+
+relations:
+  labels:
+    - TREATS
+    - BIOMARKER_FOR
+    - CAUSES
+    - ASSOCIATED_WITH
+    - TARGETS
+    - INHIBITS
+    - EXPRESSED_IN
+    - HAS_SYMPTOM
+    - INTERACTS_WITH
+    - PRODUCED_BY
+
+pipeline:
+  batch_size: 16
+  entity_threshold: 0.4
+  relation_threshold: 0.4
+
+# Medical synonym normalization: maps variant names to canonical form.
+# Applied BEFORE entity_id computation so all variants merge to one node.
+synonyms:
+  disease:
+    "SLE": "Systemic Lupus Erythematosus"
+    "systemic lupus erythematosus (SLE)": "Systemic Lupus Erythematosus"
+    "systemic lupus erythematosus": "Systemic Lupus Erythematosus"
+    "lupus": "Systemic Lupus Erythematosus"
+    "LN": "Lupus Nephritis"
+    "lupus nephritis": "Lupus Nephritis"
+    "NPSLE": "Neuropsychiatric Lupus"
+    "CVD": "Cardiovascular Disease"
+  drug:
+    "HCQ": "Hydroxychloroquine"
+    "hydroxychloroquine": "Hydroxychloroquine"
+    "MMF": "Mycophenolate Mofetil"
+    "mycophenolate": "Mycophenolate Mofetil"
+    "mycophenolate mofetil": "Mycophenolate Mofetil"
+    "CYC": "Cyclophosphamide"
+    "cyclophosphamide": "Cyclophosphamide"
+    "AZA": "Azathioprine"
+    "azathioprine": "Azathioprine"
+    "MTX": "Methotrexate"
+    "methotrexate": "Methotrexate"
+    "RTX": "Rituximab"
+    "rituximab": "Rituximab"
+    "prednisone": "Prednisone"
+    "prednisolone": "Prednisolone"
+    "belimumab": "Belimumab"
+    "anifrolumab": "Anifrolumab"
+  gene_or_protein:
+    "IFN-alpha": "Interferon Alpha"
+    "IFN-a": "Interferon Alpha"
+    "IFNa": "Interferon Alpha"
+    "INFa": "Interferon Alpha"
+    "IFN-gamma": "Interferon Gamma"
+    "IFN-g": "Interferon Gamma"
+    "TNF-alpha": "Tumor Necrosis Factor Alpha"
+    "TNF-a": "Tumor Necrosis Factor Alpha"
+    "TNFa": "Tumor Necrosis Factor Alpha"
+    "IL-2": "Interleukin 2"
+    "IL-6": "Interleukin 6"
+    "IL-10": "Interleukin 10"
+    "IL-17": "Interleukin 17"
+    "BAFF": "B-cell Activating Factor"
+    "BLyS": "B-cell Activating Factor"
+    "ANA": "Antinuclear Antibodies"
+    "anti-dsDNA": "Anti-dsDNA Antibodies"
+    "anti-dsDNA antibodies": "Anti-dsDNA Antibodies"
+    "anti-C1q": "Anti-C1q Antibodies"
+    "anti-C1q antibodies": "Anti-C1q Antibodies"
+  biomarker:
+    "ANA": "Antinuclear Antibodies"
+    "anti-dsDNA": "Anti-dsDNA Antibodies"
+    "C3": "Complement C3"
+    "C4": "Complement C4"
+    "ESR": "Erythrocyte Sedimentation Rate"
+    "CRP": "C-Reactive Protein"
